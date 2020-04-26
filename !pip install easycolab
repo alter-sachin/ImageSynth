@@ -1,0 +1,38 @@
+!pip install easycolab
+import easycolab as ec
+ec.mount()
+
+%reload_ext autoreload
+%autoreload 2
+%matplotlib inline
+
+from fastai.vision import *
+from fastai.callbacks.hooks import *
+
+path = Path('drive/My Drive/mobile-semantic-segmentation/data/raw/')
+
+path.ls()
+
+import os
+fnames = os.listdir(str(path/'images/'))
+fnames
+
+lbl_names = os.listdir(str(path/'masks/'))
+lbl_names
+
+img_f = fnames[0]
+os.chdir('str(path/'images'))
+img = open_image(img_f)
+img.show(figsize(5,5))
+
+open_image(img_f,convert_mode='L').data.unique()
+
+mask = open_mask(img_f)
+mask
+
+src_size = np.array(mask.shape[1:])
+src_size,mask.data
+
+code=np.array(["0","1","2","3","4","5","6","7","leg","plane"])
+
+
